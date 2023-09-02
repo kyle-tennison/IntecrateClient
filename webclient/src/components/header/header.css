@@ -1,3 +1,7 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
 #header {
   color: red;
   background-color: #242424;
@@ -6,5 +10,47 @@
 #header img {
   height: 40px;
   margin-left: 10px;
+  margin-right: 20px;
   filter: invert(100%);
+}
+#header .header-btn {
+  display: inline-block;
+  position: relative;
+  bottom: 9px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px transparent solid;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  font-size: 15px;
+  text-transform: lowercase;
+  font-weight: 30;
+  transition: 0.3s;
+}
+#header .header-btn .default {
+  color: green;
+}
+#header .header-btn:hover {
+  color: #242424;
+  background-color: white;
+  cursor: pointer;
+}
+#header #login-btn {
+  position: relative;
+  top: 6px;
+  display: block;
+  float: right;
+}
+#header #signup-btn {
+  position: relative;
+  top: 6px;
+  display: block;
+  float: right;
+}
+#header #profile-btn {
+  position: relative;
+  top: 6px;
+  display: block;
+  float: right;
 }/*# sourceMappingURL=header.css.map */
