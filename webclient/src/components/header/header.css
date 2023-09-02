@@ -1,1 +1,83 @@
-/*# sourceMappingURL=header.css.map */
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+#header {
+  color: red;
+  background-color: #242424;
+  padding: 5px;
+}
+#header img {
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 20px;
+  filter: invert(100%);
+}
+#header .header-btn {
+  display: inline-block;
+  position: relative;
+  bottom: 9px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px transparent solid;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 7px;
+  font-size: 15px;
+  text-transform: lowercase;
+  font-weight: 30;
+  transition: 0.3s;
+}
+#header .header-btn .default {
+  color: green;
+}
+#header .header-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2666666667);
+  cursor: pointer;
+}
+#header #signup-btn {
+  position: relative;
+  top: 4px;
+  display: block;
+  float: right;
+  background-color: #7d54e3;
+  padding: 8px;
+  border-color: #6443b6;
+}
+#header #signup-btn:hover {
+  color: #7d54e3;
+  background-color: white;
+}
+#header #login-btn {
+  position: relative;
+  top: 4px;
+  display: block;
+  float: right;
+}
+#header #profile-btn {
+  position: relative;
+  top: 4px;
+  display: block;
+  float: right;
+  height: 25px;
+  top: 2px;
+  border: 1px solid white;
+}
+#header #profile-btn img {
+  display: inline-block;
+  position: relative;
+  bottom: 7px;
+  padding: 0px;
+  margin: 0px;
+  filter: invert(0%);
+  width: 20px;
+}
+#header #profile-btn a {
+  margin-left: 10px;
+  position: relative;
+  bottom: 22px;
+}
+#header #profile-btn:hover {
+  background-color: white;
+  color: #242424;
+}/*# sourceMappingURL=header.css.map */
