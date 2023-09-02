@@ -2,7 +2,7 @@
 
 @mixin right-float 
     position: relative
-    top: 6px
+    top: 4px
     display: block
     float: right 
 
@@ -29,32 +29,60 @@
         border-radius: 5px
 
         margin: 5px
-        padding: 5px
+        padding: 7px
 
         font-size: 15px
         text-transform: lowercase
         font-weight: 30
 
         transition: 0.3s
-
+ 
         .default
             color: green
 
     .header-btn:hover
-        color: $spacegray
-        background-color: white
+        background-color: #FFFFFF44
         cursor: pointer 
+
+    #signup-btn
+        @include right-float
+        background-color: $urple
+        padding: 8px
+        border-color: mix($urple, black, 80%)
+
+    #signup-btn:hover
+        color: $urple
+        background-color: white
+
 
     #login-btn
         @include right-float
 
-    #signup-btn
-        @include right-float
 
     #profile-btn
         @include right-float
-        
-        
 
-    #signup-btn
+        height: 25px
+        top: 2px
+
+        border: 1px solid white
+
+        img 
+            display: inline-block
+            position: relative
+            bottom: 7px
+            padding: 0px
+            margin: 0px
+            filter: invert(0%)
+            width:20px
+
+        a
+            margin-left: 10px
+            position: relative
+            bottom: 22px
+
+    #profile-btn:hover
+        background-color: white
+        color: $spacegray
+        
     

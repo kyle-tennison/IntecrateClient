@@ -7,9 +7,12 @@ export default function ActionButtons(){
 
     return (
         <>
-            <button id='login-btn' class='header-btn'>Login</button>
             <button id='signup-btn' class='header-btn'>Sign Up</button>
-            <div id='profile-btn' class='header-btn'>My Profile</div>
+            <button id='login-btn' class='header-btn'>Login</button>
+            <div id='profile-btn' class='header-btn'>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg" />
+                <a>My Profile</a>
+            </div>
         </>
     )
 
