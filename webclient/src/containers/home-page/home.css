@@ -1,9 +1,11 @@
 #home-page {
   color: green;
+  height: 10000px;
 }
-#home-page canvas {
+
+#threeJsCanvas {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  margin: 1px;
 }/*# sourceMappingURL=home.css.map */

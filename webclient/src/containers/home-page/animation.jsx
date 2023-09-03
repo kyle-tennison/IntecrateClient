@@ -26,6 +26,7 @@ export default function BlenderAnimation(){
 			const clip = THREE.AnimationClip.findByName(clips, "ArmatureAction")
 			const action = mixer.clipAction(clip)
 			action.play()
+			renderer.render(scene, camera)
 
 		}, 
 		undefined,  // skip progress handler
@@ -51,21 +52,45 @@ export default function BlenderAnimation(){
 
 
 		const clock = new THREE.Clock()
-		const animate = () => {
-
-			if (mixer===undefined){
-				console.log('mixer undefined')
-			}
-
-			else {
-				mixer.update(clock.getDelta())
-			}
 
 
+		let prev_step = 0
+		function moveCamera() {
+
+			const ANIM_SPEED = -0.001
+
+			const t = document.body.getBoundingClientRect().top
+			
+			let difference = ANIM_SPEED * (t - prev_step)
+			console.log(`Difference is: ${difference}`)
+			prev_step = t
+
+			mixer.update(difference)
 			renderer.render(scene, camera)
-			window.requestAnimationFrame(animate)
-		};
-		animate()
+		}
+
+		document.body.onscroll = moveCamera
+
+		document.body.addEventListener('load', (e) => {
+			console.log('pls')
+		})
+
+
+		// const animate = () => {
+
+		// 	if (mixer===undefined){
+		// 		console.log('mixer undefined')
+		// 	}
+
+		// 	else {
+		// 		mixer.update(clock.getDelta())
+		// 	}
+
+
+		// 	renderer.render(scene, camera)
+		// 	window.requestAnimationFrame(animate)
+		// };
+		// animate()
 
 	}, [])
 
