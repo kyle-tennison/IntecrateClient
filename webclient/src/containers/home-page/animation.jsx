@@ -311,10 +311,23 @@ export default function BlenderAnimation() {
 		renderer.render(scene, camera);}
     }
 
+	// Try to render first scene
     scene_ready = true;
     tryRender();
 
+	// Attach animation function to on scroll
     document.body.onscroll = progressAnim;
+
+	// Allow window resize
+	window.addEventListener( 'resize', onWindowResize, false );
+	function onWindowResize(){
+		camera.aspect = window.innerWidth / window.innerHeight
+  		camera.updateProjectionMatrix()
+
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		renderer.render(scene, camera)
+
+	}
   }, []);
 
   return (
