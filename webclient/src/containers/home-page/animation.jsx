@@ -42,6 +42,9 @@ export default function BlenderAnimation() {
 							roughness: 1,
 						});
 
+						boxMaterial.castShadow = true;
+						boxMaterial.receiveShadow = true;
+
 						o.material = boxMaterial
 					}
 					// Box-Light Object
@@ -67,6 +70,7 @@ export default function BlenderAnimation() {
 							roughnessMap: floorRoughness,
 						});
 
+						floorTexture.receiveShadow = true;
 						o.material = floorMaterial
 					}
 				}
@@ -82,7 +86,11 @@ export default function BlenderAnimation() {
 			mixer.update(0)
 			renderer.render(scene, camera)
 		},
-			undefined,  // skip progress handler
+			((prog) => {
+				if (prog.loaded == prog.total){
+					console.log('done loading')
+				}
+			}),  // skip progress handler
 			(error) => { // err handler
 				console.error(error);
 			});
@@ -100,12 +108,17 @@ export default function BlenderAnimation() {
 		const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.1)
 		scene.add(ambientLight)
 
-		const rectLightHigh = new THREE.RectAreaLight(0xffffff, 1, 20, 20)
-		const lowLight = new THREE.PointLight(0xffffff, 1)
-		rectLightHigh.position.set(0,20,10)
-		lowLight.position.set(0, 5, 2)
-		scene.add(rectLightHigh)
-		// scene.add(lowLight)
+		const innerLight = new THREE.PointLight(0xffffff, 1)
+		scene.add(innerLight)
+
+		const sceneLight1 = new THREE.PointLight(0xffffff, 6)
+		sceneLight1.position.set(1, 5 , 2)
+		sceneLight1.castShadow = true
+		const sceneLight2 = new THREE.PointLight(0xffffff, 3)
+		sceneLight2.position.set(-4, 3 , -2)
+		sceneLight2.castShadow = true
+		scene.add(sceneLight1)
+		scene.add(sceneLight2)
 
 		// Set default position
 		camera.position.set(-0.05, 1, 0)
