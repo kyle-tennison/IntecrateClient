@@ -1,9 +1,45 @@
+@import '../../global.sass'
+
 #home-page
     position: absolute
     z-index: 10
-    color: green
     height: 10000px
     width: 100%
+
+    color: white
+
+    header:
+        z-index: 20
+
+    #title
+        color: white
+        z-index: 0
+        position: static
+
+        margin-top: 240px
+        margin-bottom: 0px
+
+        text-transform: none
+        font-size: 200px
+        font-family: Georgia, 'Times New Roman', Times, serif
+        text-align: center
+        letter-spacing: 0.05em
+
+    #subtitle
+        font-family: Georgia, 'Times New Roman', Times, serif
+        text-align: center
+        font-size: 30px
+        font-weight: 200
+
+    h1 
+        color: $spacegray
+
+        text-align: center 
+        text-transform: lowercase
+
+        font-size: 70px
+        font-weight: 30
+
 
 #threeJsCanvas
     z-index: 0
