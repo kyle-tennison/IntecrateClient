@@ -2,9 +2,10 @@
 
 @mixin right-float 
     position: relative
-    top: 4px
+    top: 6px
     display: block
     float: right 
+    margin: 5px
 
 #header
     color: red
@@ -12,6 +13,8 @@
     padding: 5px
 
     img
+        position: relative
+        top: 7px
         height: 40px
         margin-left: 10px 
         margin-right: 20px
@@ -20,7 +23,7 @@
     .header-btn
         display: inline-block
         position: relative
-        bottom: 9px
+        bottom: 7px
 
         color: white
         background-color: #00000000
@@ -47,7 +50,7 @@
     #signup-btn
         @include right-float
         background-color: $urple
-        padding: 8px
+        margin-right: 40px
         border-color: mix($urple, black, 80%)
 
     #signup-btn:hover
@@ -68,18 +71,18 @@
         border: 1px solid white
 
         img 
-            display: inline-block
             position: relative
-            bottom: 7px
+            top: 3px
             padding: 0px
             margin: 0px
             filter: invert(0%)
             width:20px
+            height: auto
 
         a
             margin-left: 10px
             position: relative
-            bottom: 22px
+            bottom: 3px
 
     #profile-btn:hover
         background-color: white

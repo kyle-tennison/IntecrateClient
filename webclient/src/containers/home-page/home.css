@@ -1,3 +1,45 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
 #home-page {
-  color: green;
+  position: absolute;
+  z-index: 10;
+  height: 10000px;
+  width: 100%;
+  color: white;
+  header-z-index: 20;
+}
+#home-page #title {
+  color: white;
+  z-index: 0;
+  position: static;
+  margin-top: 240px;
+  margin-bottom: 0px;
+  text-transform: none;
+  font-size: 200px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+#home-page #subtitle {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 200;
+}
+#home-page h1 {
+  color: #242424;
+  text-align: center;
+  text-transform: lowercase;
+  font-size: 70px;
+  font-weight: 30;
+}
+
+#threeJsCanvas {
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0px;
 }/*# sourceMappingURL=home.css.map */
