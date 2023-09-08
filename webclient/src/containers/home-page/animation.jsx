@@ -73,8 +73,6 @@ export default function BlenderAnimation() {
               boxMaterial.receiveShadow = true;
 
               o.material = boxMaterial;
-
-              console.log("set box material");
             }
             // Box-Light Object
             else if (o.name === "Plane_2") {
@@ -137,6 +135,9 @@ export default function BlenderAnimation() {
 
     const innerLight = new THREE.PointLight(0xffffff, 1);
     scene.add(innerLight);
+
+	// const innerLightHelper = new THREE.PointLightHelper(innerLight, 0.5, 0xFF0000)
+	// scene.add(innerLightHelper)
 
     const sceneLight1 = new THREE.PointLight(0xffffff, 6);
     sceneLight1.position.set(1, 5, 2);
@@ -215,6 +216,55 @@ export default function BlenderAnimation() {
       return { x: x(t), y: y(t), z: z(t), rx: rx(t), ry: ry(t), rz: rz(t) };
     }
 
+	// Light Animation Path
+	function lightAnimation(t){
+
+		// Points that will be interpolated; key is time, value is position
+
+		let x0 = 0.2 // allow x adjustments
+
+		let points = {
+			0 : [0 + x0, 0, 0],
+			1.96 : [0 + x0, 0, 0],
+			2.2 : [0 + x0, 0.3, 0],
+			2.4 : [0.3 + x0, 1, 0],
+			2.63 : [0.7 + x0, 1, 0],
+			2.76 : [1.3 + x0, 1.5, 0],
+			2.8 : [1 + x0, 1, 0],
+			4 : [0 + x0, 0, 0],
+		} // animation path
+
+
+		function interpolate(t) {
+			let tSteps = Object.keys(points).map(key => parseFloat(key, 10));
+			tSteps.sort((a,b) => a - b)
+
+			let lowBound = tSteps[0]
+			let highBound = tSteps[tSteps.length - 1]
+
+			for (const ts of tSteps){
+				let d = (ts - t)
+				if (d < 0 && ts > lowBound) lowBound = ts
+				else if (d > 0 && ts < highBound) highBound = ts
+			}
+
+			let percent = (t - lowBound) / (highBound - lowBound)
+			
+			let pl = points[lowBound]
+			let ph = points[highBound]	
+			
+			let newPoint = {
+				x: percent*(ph[0]-pl[0]) + pl[0],
+				y: percent*(ph[1]-pl[1]) + pl[1],
+				z: percent*(ph[2]-pl[2]) + pl[2],
+			};
+			
+			return newPoint;
+		}
+
+		return interpolate(t)
+	}
+
     // Progress Animation
     let prev_step = 0;
     let was_end = false;
@@ -242,21 +292,23 @@ export default function BlenderAnimation() {
       prev_step = t;
 
       if (t < 0) {
-        difference = 0; // prevent animation from going negative
+        // prevent animation from going negative
       }
 
-      // Move the camera to the new position
-      let newPosition = cameraAnimation(t);
-      if (newPosition === null) {
-        // we don't need to animate anything new in this case
-      } else {
-        let { x, y, z, rx, ry, rz } = newPosition;
-        camera.position.set(x, y, z);
-        camera.rotation.set(rx, ry, rz);
-      }
+	  else {
+		// Move the camera to the new position
+		let { x, y, z, rx, ry, rz } = cameraAnimation(t);
+		camera.position.set(x, y, z);
+		camera.rotation.set(rx, ry, rz);
 
-      mixer.update(difference);
-      renderer.render(scene, camera);
+		// Move inner light ot the new position
+		({x, y, z} = lightAnimation(t))
+		innerLight.position.set(x, y, z)
+
+		// console.debug(t)
+
+		mixer.update(difference);
+		renderer.render(scene, camera);}
     }
 
     scene_ready = true;
