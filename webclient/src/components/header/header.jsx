@@ -1,6 +1,8 @@
 import ActionButtons from "./action-buttons"
 import "./header.css"
 
+import icon from "../../../public/icon.svg"
+
 
 export default function Header(){
 
@@ -10,8 +12,8 @@ export default function Header(){
             width: "100%",
             top: "0px",
         }}>
-            <img className="logo icon" src="../../../public/icon.svg"/>
-            <button className='header-btn default'>Home</button>
+            <img className="logo icon" src={icon}/>
+            <button className='header-btn default'>Homo</button>
             <button className='header-btn default'>About Us</button>
             <button className='header-btn default'>Alpha Progression</button>
             <ActionButtons></ActionButtons>
