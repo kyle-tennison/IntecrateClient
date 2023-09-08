@@ -1,6 +1,10 @@
 import { useEffect } from 'react';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 export default function BlenderAnimation() {
 	useEffect(() => {
@@ -20,12 +24,61 @@ export default function BlenderAnimation() {
 		loader.load('../../../public/home-animation.glb', (gltf) => { // load handler
 			const model = gltf.scene
 			scene.add(model)
+
+			// Assign Materials
+			model.traverse((o) => {
+				if (o.isMesh){
+					console.log(o)
+					// Box Object
+					if (o.name === 'Plane_1'){
+						
+						let boxTexture = new THREE.TextureLoader().load('../../../public/box-texture.png')
+						boxTexture.wrapT = THREE.RepeatWrapping;
+						boxTexture.wrapS = THREE.RepeatWrapping;
+						boxTexture.repeat.set( 3, 3 );
+						var boxMaterial = new THREE.MeshStandardMaterial({
+							// color: 0x424242,
+							map: boxTexture,
+							roughness: 1,
+						});
+
+						o.material = boxMaterial
+					}
+					// Box-Light Object
+					else if (o.name === 'Plane_2') {
+						var lightMaterial = new THREE.MeshStandardMaterial({color: 0xffffff})
+						lightMaterial.emissive = new THREE.Color(0xffffff)
+						lightMaterial.emissiveIntensity = 1
+
+						o.material = lightMaterial
+					}
+					// Floor Object
+					else if (o.name === 'Floor') {
+
+
+						let floorTexture = new THREE.TextureLoader().load('../../../public/wood-texture.tif')
+						let floorRoughness = new THREE.TextureLoader().load('../../../public/wood-roughness.tif')
+						floorTexture.wrapT = THREE.RepeatWrapping;
+						floorTexture.wrapS = THREE.RepeatWrapping;
+						floorTexture.repeat.set( 30, 30 );
+						var floorMaterial = new THREE.MeshStandardMaterial({
+							// color: 0x424242,
+							map: floorTexture,
+							roughnessMap: floorRoughness,
+						});
+
+						o.material = floorMaterial
+					}
+				}
+			})
+
 			mixer = new THREE.AnimationMixer(model)
+
 			const clips = gltf.animations;
-			console.log(clips)
 			const clip = THREE.AnimationClip.findByName(clips, "ArmatureAction")
 			const action = mixer.clipAction(clip)
 			action.play()
+
 			mixer.update(0)
 			renderer.render(scene, camera)
 		},
@@ -33,6 +86,7 @@ export default function BlenderAnimation() {
 			(error) => { // err handler
 				console.error(error);
 			});
+
 
 		// Load Render Settings
 		renderer.setSize(window.innerWidth, window.innerHeight);
@@ -46,9 +100,12 @@ export default function BlenderAnimation() {
 		const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.1)
 		scene.add(ambientLight)
 
-		const rectLight = new THREE.RectAreaLight(0xffffff, 1, 20, 20)
-		rectLight.position.set(0,20,10)
-		scene.add(rectLight)
+		const rectLightHigh = new THREE.RectAreaLight(0xffffff, 1, 20, 20)
+		const lowLight = new THREE.PointLight(0xffffff, 1)
+		rectLightHigh.position.set(0,20,10)
+		lowLight.position.set(0, 5, 2)
+		scene.add(rectLightHigh)
+		// scene.add(lowLight)
 
 		// Set default position
 		camera.position.set(-0.05, 1, 0)
