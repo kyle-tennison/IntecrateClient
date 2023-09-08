@@ -8,6 +8,8 @@
   padding: 5px;
 }
 #header img {
+  position: relative;
+  top: 7px;
   height: 40px;
   margin-left: 10px;
   margin-right: 20px;
@@ -16,7 +18,7 @@
 #header .header-btn {
   display: inline-block;
   position: relative;
-  bottom: 9px;
+  bottom: 7px;
   color: white;
   background-color: rgba(0, 0, 0, 0);
   border: 1px transparent solid;
@@ -37,11 +39,12 @@
 }
 #header #signup-btn {
   position: relative;
-  top: 4px;
+  top: 6px;
   display: block;
   float: right;
+  margin: 5px;
   background-color: #7d54e3;
-  padding: 8px;
+  margin-right: 40px;
   border-color: #6443b6;
 }
 #header #signup-btn:hover {
@@ -50,32 +53,34 @@
 }
 #header #login-btn {
   position: relative;
-  top: 4px;
+  top: 6px;
   display: block;
   float: right;
+  margin: 5px;
 }
 #header #profile-btn {
   position: relative;
-  top: 4px;
+  top: 6px;
   display: block;
   float: right;
+  margin: 5px;
   height: 25px;
   top: 2px;
   border: 1px solid white;
 }
 #header #profile-btn img {
-  display: inline-block;
   position: relative;
-  bottom: 7px;
+  top: 3px;
   padding: 0px;
   margin: 0px;
   filter: invert(0%);
   width: 20px;
+  height: auto;
 }
 #header #profile-btn a {
   margin-left: 10px;
   position: relative;
-  bottom: 22px;
+  bottom: 3px;
 }
 #header #profile-btn:hover {
   background-color: white;
