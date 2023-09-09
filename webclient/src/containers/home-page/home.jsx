@@ -4,8 +4,6 @@ import BlenderAnimation from "./animation"
 
 export default function Home(){
 
-    
-
     return (
         <div id="home-page">
             <div id="animation">

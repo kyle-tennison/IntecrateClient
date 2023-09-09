@@ -2,6 +2,10 @@ import { useEffect } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
+import BOX_TEXTURE from "/box-texture.png";
+import WOOD_TEXTURE from "/wood-texture.png"
+import WOOD_ROUGHNESS from "/wood-roughness.png"
+
 export default function BlenderAnimation() {
   useEffect(() => {
     // Setup Modeler Objects
@@ -36,20 +40,20 @@ export default function BlenderAnimation() {
 
     // Load Textures
     let boxTexture = new THREE.TextureLoader().load(
-      "../../../public/box-texture.png"
+      BOX_TEXTURE
     );
     let floorTexture = new THREE.TextureLoader().load(
-      "../../../public/wood-texture.tif"
+      WOOD_TEXTURE
     );
     let floorRoughness = new THREE.TextureLoader().load(
-      "../../../public/wood-roughness.tif"
+      WOOD_ROUGHNESS
     );
 
     // Load Geometry
     let mixer;
     const loader = new GLTFLoader();
     loader.load(
-      "../../../public/home-animation.glb",
+      "/home-animation.glb",
       (gltf) => {
         // load handler
         const model = gltf.scene;
