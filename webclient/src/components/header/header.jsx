@@ -13,7 +13,7 @@ export default function Header(){
             top: "0px",
         }}>
             <img className="logo icon" src={icon}/>
-            <button className='header-btn default'>Homo</button>
+            <button className='header-btn default'>Home</button>
             <button className='header-btn default'>About Us</button>
             <button className='header-btn default'>Alpha Progression</button>
             <ActionButtons></ActionButtons>
