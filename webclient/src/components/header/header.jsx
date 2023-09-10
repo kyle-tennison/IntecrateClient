@@ -1,7 +1,7 @@
 import ActionButtons from "./action-buttons";
 import "./header.css";
 
-import icon from "../../../public/icon.svg";
+import icon from "/icon.svg";
 
 export default function Header() {
   return (
