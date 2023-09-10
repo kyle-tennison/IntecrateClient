@@ -4,7 +4,7 @@ import full_logo from "/full-logo.svg";
 
 import x_logo from "./assets/x-logo.svg";
 import linkedin_logo from "./assets/linkedin-logo.png";
-import facebook_logo from "./assets/facebook-logo.png";
+import github_logo from "./assets/github-logo.png";
 
 export default function Footer() {
   return (
@@ -46,10 +46,10 @@ export default function Footer() {
             </div>
             <div className="subColumn">
               <a
-                href="https://www.makeuseof.com/reasons-to-quit-facebook/"
+                href="https://github.com/kyle-tennison/IntecrateClient"
                 target="_blank"
               >
-                <img src={facebook_logo} className="social-media-icon"></img>
+                <img src={github_logo} className="social-media-icon"></img>
               </a>
             </div>
           </div>
