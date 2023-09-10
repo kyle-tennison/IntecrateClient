@@ -33,26 +33,40 @@ export default function Footer() {
             }}
           >
             <div className="subColumn">
-              <a href="https://twitter.com/intecrate" target="_blank"><img src={x_logo} className="social-media-icon"></img></a>
+              <a href="https://twitter.com/intecrate" target="_blank">
+                <img src={x_logo} className="social-media-icon"></img>
+              </a>
             </div>
             <div className="subColumn">
-              <a href="https://www.linkedin.com/company/intecrate" target="_blank"><img src={linkedin_logo} className="social-media-icon"></img></a>
+              <a
+                href="https://www.linkedin.com/company/intecrate"
+                target="_blank"
+              >
+                <img src={linkedin_logo} className="social-media-icon"></img>
+              </a>
             </div>
             <div className="subColumn">
-              <a href="https://www.makeuseof.com/reasons-to-quit-facebook/" target="_blank"><img src={facebook_logo} className="social-media-icon"></img></a>
+              <a
+                href="https://www.makeuseof.com/reasons-to-quit-facebook/"
+                target="_blank"
+              >
+                <img src={facebook_logo} className="social-media-icon"></img>
+              </a>
             </div>
           </div>
         </div>
         <div className="column" id="col3">
-            <div className="container">
-                <h5>Business inquiries</h5>
-                <a>kyletennison05@gmail.com</a>
-                <br />
-                <h5>Legal</h5>
-                <a href="https://intecrate.co/legal/license">Copyright</a> <br />
-                <a href="https://intecrate.co/legal/account_terms">Terms</a> <br />
-                <a href="https://intecrate.co/legal/distribution_request">Distribution</a>
-            </div>
+          <div className="container">
+            <h5>Business inquiries</h5>
+            <a>kyletennison05@gmail.com</a>
+            <br />
+            <h5>Legal</h5>
+            <a href="https://intecrate.co/legal/license">Copyright</a> <br />
+            <a href="https://intecrate.co/legal/account_terms">Terms</a> <br />
+            <a href="https://intecrate.co/legal/distribution_request">
+              Distribution
+            </a>
+          </div>
         </div>
       </div>
     </div>

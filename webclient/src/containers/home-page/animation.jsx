@@ -3,8 +3,8 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 import BOX_TEXTURE from "/box-texture.png";
-import WOOD_TEXTURE from "/wood-texture.png"
-import WOOD_ROUGHNESS from "/wood-roughness.png"
+import WOOD_TEXTURE from "/wood-texture.png";
+import WOOD_ROUGHNESS from "/wood-roughness.png";
 
 export default function BlenderAnimation() {
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function BlenderAnimation() {
       60,
       window.innerWidth / window.innerHeight,
       0.001,
-      1000
+      1000,
     );
     const canvas = document.getElementById("threeJsCanvas");
     const renderer = new THREE.WebGLRenderer({
@@ -31,7 +31,7 @@ export default function BlenderAnimation() {
       } else if (!scene_ready) {
         console.log(`Cannot render. Scene is not ready`);
       } else {
-        console.log('manual render')
+        console.log("manual render");
         mixer.update(0);
         progressAnim();
         renderer.render(scene, camera);
@@ -39,15 +39,9 @@ export default function BlenderAnimation() {
     }
 
     // Load Textures
-    let boxTexture = new THREE.TextureLoader().load(
-      BOX_TEXTURE
-    );
-    let floorTexture = new THREE.TextureLoader().load(
-      WOOD_TEXTURE
-    );
-    let floorRoughness = new THREE.TextureLoader().load(
-      WOOD_ROUGHNESS
-    );
+    let boxTexture = new THREE.TextureLoader().load(BOX_TEXTURE);
+    let floorTexture = new THREE.TextureLoader().load(WOOD_TEXTURE);
+    let floorRoughness = new THREE.TextureLoader().load(WOOD_ROUGHNESS);
 
     // Load Geometry
     let mixer;
@@ -124,7 +118,7 @@ export default function BlenderAnimation() {
       (error) => {
         // err handler
         console.error(error);
-      }
+      },
     );
 
     // Load Render Settings
@@ -152,10 +146,12 @@ export default function BlenderAnimation() {
     scene.add(sceneLight2);
 
     // Gets animation time step
-    function getTime(){
+    function getTime() {
       const ANIM_SPEED = -0.001; // Scale at which to play the animation
       const ANIM_OFFSET = 0.2; // skip a bit ahead in the animation
-      return document.body.getBoundingClientRect().top * ANIM_SPEED + ANIM_OFFSET;
+      return (
+        document.body.getBoundingClientRect().top * ANIM_SPEED + ANIM_OFFSET
+      );
     }
 
     // Camera animation path
@@ -224,53 +220,52 @@ export default function BlenderAnimation() {
       return { x: x(t), y: y(t), z: z(t), rx: rx(t), ry: ry(t), rz: rz(t) };
     }
 
-	// Light Animation Path
-	function lightAnimation(t){
+    // Light Animation Path
+    function lightAnimation(t) {
+      // Points that will be interpolated; key is time, value is position
 
-		// Points that will be interpolated; key is time, value is position
+      let x0 = 0.2; // allow x adjustments
 
-		let x0 = 0.2 // allow x adjustments
+      let points = {
+        0: [0 + x0, 0, 0],
+        1.96: [0 + x0, 0, 0],
+        2.2: [0 + x0, 0.3, 0],
+        2.4: [0.3 + x0, 1, 0],
+        2.63: [0.7 + x0, 1, 0],
+        2.76: [1.3 + x0, 1.5, 0],
+        2.8: [1 + x0, 1, 0],
+        4: [0 + x0, 0, 0],
+      }; // animation path
 
-		let points = {
-			0 : [0 + x0, 0, 0],
-			1.96 : [0 + x0, 0, 0],
-			2.2 : [0 + x0, 0.3, 0],
-			2.4 : [0.3 + x0, 1, 0],
-			2.63 : [0.7 + x0, 1, 0],
-			2.76 : [1.3 + x0, 1.5, 0],
-			2.8 : [1 + x0, 1, 0],
-			4 : [0 + x0, 0, 0],
-		} // animation path
+      function interpolate(t) {
+        let tSteps = Object.keys(points).map((key) => parseFloat(key, 10));
+        tSteps.sort((a, b) => a - b);
 
-		function interpolate(t) {
-			let tSteps = Object.keys(points).map(key => parseFloat(key, 10));
-			tSteps.sort((a,b) => a - b)
+        let lowBound = tSteps[0];
+        let highBound = tSteps[tSteps.length - 1];
 
-			let lowBound = tSteps[0]
-			let highBound = tSteps[tSteps.length - 1]
+        for (const ts of tSteps) {
+          let d = ts - t;
+          if (d < 0 && ts > lowBound) lowBound = ts;
+          else if (d > 0 && ts < highBound) highBound = ts;
+        }
 
-			for (const ts of tSteps){
-				let d = (ts - t)
-				if (d < 0 && ts > lowBound) lowBound = ts
-				else if (d > 0 && ts < highBound) highBound = ts
-			}
+        let percent = (t - lowBound) / (highBound - lowBound);
 
-			let percent = (t - lowBound) / (highBound - lowBound)
-			
-			let pl = points[lowBound]
-			let ph = points[highBound]	
-			
-			let newPoint = {
-				x: percent*(ph[0]-pl[0]) + pl[0],
-				y: percent*(ph[1]-pl[1]) + pl[1],
-				z: percent*(ph[2]-pl[2]) + pl[2],
-			};
-			
-			return newPoint;
-		}
+        let pl = points[lowBound];
+        let ph = points[highBound];
 
-		return interpolate(t)
-	}
+        let newPoint = {
+          x: percent * (ph[0] - pl[0]) + pl[0],
+          y: percent * (ph[1] - pl[1]) + pl[1],
+          z: percent * (ph[2] - pl[2]) + pl[2],
+        };
+
+        return newPoint;
+      }
+
+      return interpolate(t);
+    }
 
     // Progress Animation
     let prev_step = 0;
@@ -278,7 +273,7 @@ export default function BlenderAnimation() {
     function progressAnim() {
       const ANIM_END = 2.95;
 
-      let t = getTime()
+      let t = getTime();
 
       // If the animation is over, don't do anything
       if (t >= ANIM_END) {
@@ -297,55 +292,50 @@ export default function BlenderAnimation() {
 
       if (t < 0) {
         // prevent animation from going negative
+      } else {
+        // Move the camera to the new position
+        let { x, y, z, rx, ry, rz } = cameraAnimation(t);
+        camera.position.set(x, y, z);
+        camera.rotation.set(rx, ry, rz);
+
+        // Move inner light ot the new position
+        ({ x, y, z } = lightAnimation(t));
+        innerLight.position.set(x, y, z);
+
+        // console.debug(t)
+
+        mixer.update(difference);
+        renderer.render(scene, camera);
       }
-
-	  else {
-		// Move the camera to the new position
-		let { x, y, z, rx, ry, rz } = cameraAnimation(t);
-		camera.position.set(x, y, z);
-		camera.rotation.set(rx, ry, rz);
-
-		// Move inner light ot the new position
-		({x, y, z} = lightAnimation(t))
-		innerLight.position.set(x, y, z)
-
-		// console.debug(t)
-
-		mixer.update(difference);
-		renderer.render(scene, camera);}
     }
-
 
     // Keep rendering the first frame to make sure everything loaded
-    function renderLoop(){
-      if (getTime() === 0.2){
-        tryRender()
-        setTimeout(renderLoop, 100)
-      }
-      else{
-        console.log('stopping render loop')
+    function renderLoop() {
+      if (getTime() === 0.2) {
+        tryRender();
+        setTimeout(renderLoop, 100);
+      } else {
+        console.log("stopping render loop");
       }
     }
-    renderLoop()
+    renderLoop();
 
-
-	// Try to render first scene
+    // Try to render first scene
     scene_ready = true;
     tryRender();
 
-	// Attach animation function to on scroll
+    // Attach animation function to on scroll
     document.body.onscroll = progressAnim;
 
-	// Allow window resize
-	window.addEventListener( 'resize', onWindowResize, false );
-	function onWindowResize(){
-		camera.aspect = window.innerWidth / window.innerHeight
-  		camera.updateProjectionMatrix()
+    // Allow window resize
+    window.addEventListener("resize", onWindowResize, false);
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
 
-		renderer.setSize( window.innerWidth, window.innerHeight );
-		renderer.render(scene, camera)
-
-	}
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.render(scene, camera);
+    }
   }, []);
 
   return (
