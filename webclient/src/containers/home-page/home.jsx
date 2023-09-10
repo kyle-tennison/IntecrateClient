@@ -11,6 +11,16 @@ import { useEffect } from "react"
 
 export default function Home(){
 
+    useEffect(() => {
+        let header = document.getElementById("header")
+
+        setTimeout(
+            () => {header.style.opacity = 1},
+            4000
+        )
+
+    })
+
     return (
         <div id="home-page">
             <div id="animation">
@@ -68,7 +78,7 @@ export default function Home(){
                         <button id="blog-button">Read the Development Blog</button>
                     </div>
                 </Fade>
-                <Header />  {/* Put header last so that it renders on top */}
+                <Header/>  {/* Put header last so that it renders on top */}
             </div>
         </div>
     )

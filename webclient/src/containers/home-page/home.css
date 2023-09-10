@@ -9,8 +9,12 @@
   width: 100%;
   color: white;
   overflow: hidden;
-  header-position: absolute;
-  header-z-index: 200;
+}
+#home-page #header {
+  transition: 0.5s;
+  position: absolute;
+  z-index: 200;
+  opacity: 0%;
 }
 #home-page #title {
   color: white;
