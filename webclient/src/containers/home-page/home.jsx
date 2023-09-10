@@ -11,12 +11,23 @@ import kid_typing from "./assets/kid-typing.jpg";
 import { useEffect } from "react";
 
 export default function Home() {
+
+  const queryParameters = new URLSearchParams(window.location.search)
+  const fadeBar = queryParameters.get("fadeBar")
+
   useEffect(() => {
     let header = document.getElementById("header");
 
-    setTimeout(() => {
-      header.style.opacity = 1;
-    }, 4000);
+    if (fadeBar === '0'){
+      console.log('skipping fade')
+      header.style.transition = "0s"
+      header.style.opacity = 1
+    }
+    else {
+      setTimeout(() => {
+        header.style.opacity = 1;
+      }, 4000);
+    }
   });
 
   return (
