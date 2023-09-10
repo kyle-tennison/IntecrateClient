@@ -1,5 +1,6 @@
 import "./home.css"
-import Header from "../../components/header/header"
+import Header from "/src/components/header/header"
+import Footer from "/src/components/footer/footer"
 import BlenderAnimation from "./animation"
 import Fade from "react-reveal/Fade"
 
@@ -78,7 +79,8 @@ export default function Home(){
                         <button id="blog-button">Read the Development Blog</button>
                     </div>
                 </Fade>
-                <Header/>  {/* Put header last so that it renders on top */}
+                <Footer />
+                <Header />  {/* Put header last so that it renders on top */}
             </div>
         </div>
     )
