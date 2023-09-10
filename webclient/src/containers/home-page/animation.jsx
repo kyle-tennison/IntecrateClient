@@ -31,7 +31,7 @@ export default function BlenderAnimation() {
       } else if (!scene_ready) {
         console.log(`Cannot render. Scene is not ready`);
       } else {
-        console.log("rendering first frame");
+        console.log('manual render')
         mixer.update(0);
         progressAnim();
         renderer.render(scene, camera);
@@ -140,9 +140,6 @@ export default function BlenderAnimation() {
     const innerLight = new THREE.PointLight(0xffffff, 1);
     scene.add(innerLight);
 
-	// const innerLightHelper = new THREE.PointLightHelper(innerLight, 0.5, 0xFF0000)
-	// scene.add(innerLightHelper)
-
     const sceneLight1 = new THREE.PointLight(0xffffff, 6);
     sceneLight1.position.set(1, 5, 2);
     sceneLight1.castShadow = true;
@@ -153,6 +150,13 @@ export default function BlenderAnimation() {
 
     scene.add(sceneLight1);
     scene.add(sceneLight2);
+
+    // Gets animation time step
+    function getTime(){
+      const ANIM_SPEED = -0.001; // Scale at which to play the animation
+      const ANIM_OFFSET = 0.2; // skip a bit ahead in the animation
+      return document.body.getBoundingClientRect().top * ANIM_SPEED + ANIM_OFFSET;
+    }
 
     // Camera animation path
     function cameraAnimation(t) {
@@ -238,7 +242,6 @@ export default function BlenderAnimation() {
 			4 : [0 + x0, 0, 0],
 		} // animation path
 
-
 		function interpolate(t) {
 			let tSteps = Object.keys(points).map(key => parseFloat(key, 10));
 			tSteps.sort((a,b) => a - b)
@@ -273,12 +276,9 @@ export default function BlenderAnimation() {
     let prev_step = 0;
     let was_end = false;
     function progressAnim() {
-      const ANIM_SPEED = -0.001; // Scale at which to play the animation
-      const ANIM_OFFSET = 0.2; // skip a bit ahead in the animation
       const ANIM_END = 2.95;
 
-      let t =
-        document.body.getBoundingClientRect().top * ANIM_SPEED + ANIM_OFFSET;
+      let t = getTime()
 
       // If the animation is over, don't do anything
       if (t >= ANIM_END) {
@@ -314,6 +314,20 @@ export default function BlenderAnimation() {
 		mixer.update(difference);
 		renderer.render(scene, camera);}
     }
+
+
+    // Keep rendering the first frame to make sure everything loaded
+    function renderLoop(){
+      if (getTime() === 0.2){
+        tryRender()
+        setTimeout(renderLoop, 100)
+      }
+      else{
+        console.log('stopping render loop')
+      }
+    }
+    renderLoop()
+
 
 	// Try to render first scene
     scene_ready = true;
