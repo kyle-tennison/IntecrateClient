@@ -64,7 +64,7 @@ export default function Home(){
                         <div className="home-img half-right">
                             <img src={kid_typing} alt="Someone using intecrate"></img>
                         </div>
-                        <div className="home-paragraph half-left" style={{marginTop: "20px"}}>
+                        <div className="home-paragraph half-left" style={{marginTop: "35px"}}>
                             <strong>We're here for you</strong><br></br>
                             We know that taking this next step in your engineering
                             journey is daunting, but we're here to assist you
