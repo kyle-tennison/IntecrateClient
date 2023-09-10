@@ -2,9 +2,9 @@ import "./footer.css";
 
 import full_logo from "/full-logo.svg";
 
-import x_logo from "/x-logo.svg";
-import linkedin_logo from "/linkedin-logo.png";
-import facebook_logo from "/facebook-logo.png";
+import x_logo from "./assets/x-logo.svg";
+import linkedin_logo from "./assets/linkedin-logo.png";
+import facebook_logo from "./assets/facebook-logo.png";
 
 export default function Footer() {
   return (
