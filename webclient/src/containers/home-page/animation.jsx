@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-import BOX_TEXTURE from "/box-texture.png";
-import WOOD_TEXTURE from "/wood-texture.png";
-import WOOD_ROUGHNESS from "/wood-roughness.png";
+import BOX_TEXTURE from "./assets/box-texture.png";
+import WOOD_TEXTURE from "./assets/wood-texture.png";
+import WOOD_ROUGHNESS from "./assets/wood-roughness.png";
 
 export default function BlenderAnimation() {
   useEffect(() => {

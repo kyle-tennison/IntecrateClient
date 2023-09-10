@@ -3,10 +3,11 @@ import Header from "/src/components/header/header";
 import Footer from "/src/components/footer/footer";
 import BlenderAnimation from "./animation";
 import Fade from "react-reveal/Fade";
+import { Link } from "react-router-dom"
 
-import man_thinking from "/man-thinking.jpg";
-import laser_cutter from "/laser-cutter.jpg";
-import kid_typing from "/kid-typing.jpg";
+import man_thinking from "./assets/man-thinking.jpg";
+import laser_cutter from "./assets/laser-cutter.jpg";
+import kid_typing from "./assets/kid-typing.jpg";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -80,8 +81,10 @@ export default function Home() {
             </div>
           </div>
           <h1 style={{ marginTop: "200px" }}>Everything coming soon</h1>
-          <div style={{ textAlign: "center" }}>
-            <button id="blog-button">Read the Development Blog</button>
+          <div style={{ textAlign: "center" }}>   
+          <button id="blog-button" onClick={() => {window.location.href = "/dev-blog"}}>
+            Read the Development Blog
+          </button>
           </div>
         </Fade>
         <Footer />
