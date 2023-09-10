@@ -42,6 +42,7 @@
   margin: 0 auto;
   height: 300px;
   color: #242424;
+  max-width: 800px;
 }
 #home-page .home-block .home-paragraph {
   text-align: center;
@@ -62,15 +63,16 @@
      object-fit: cover;
 }
 #home-page .half-right {
-  height: 100%;
   display: inline-block;
-  width: 45%;
   float: right;
+  height: 100%;
+  width: 45%;
 }
 #home-page .half-left {
-  float: left;
   display: inline-block;
+  float: left;
   width: 45%;
+  height: 100%;
 }
 
 #threeJsCanvas {
