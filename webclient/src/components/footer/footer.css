@@ -13,6 +13,7 @@
   box-shadow: 0px -5px 20px #505050;
   text-align: center;
   padding: 10px;
+  text-align: center;
 }
 #footer .column {
   position: relative;
@@ -68,4 +69,19 @@
   margin: 10px;
   font-size: 20px;
   font-weight: 100;
+}
+@media (max-width: 710px) {
+  #footer #col1 {
+    display: none;
+  }
+  #footer #col3 {
+    display: none;
+  }
+  #footer #col2 {
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }/*# sourceMappingURL=footer.css.map */

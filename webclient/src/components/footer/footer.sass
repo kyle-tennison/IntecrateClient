@@ -17,6 +17,8 @@ $footer-gray: mix($spacegray, white, 50%)
     text-align: center
     padding: 10px
 
+    text-align: center
+
     .column
         position: relative
         height: 100%
@@ -80,4 +82,16 @@ $footer-gray: mix($spacegray, white, 50%)
                 font-weight: 100
 
 
+    @media (max-width: 710px)
+        #col1
+            display: none
+        #col3
+            display: none
+        #col2
+            width: 70%
+            position: absolute
+            top: 50%
+            left: 50%
+            -ms-transform: translate(-50%, -50%)
+            transform: translate(-50%, -50%)
         
