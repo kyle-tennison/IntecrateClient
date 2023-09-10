@@ -8,7 +8,13 @@
   height: 10000px;
   width: 100%;
   color: white;
-  header-z-index: 20;
+  overflow: hidden;
+}
+#home-page #header {
+  transition: 0.5s;
+  position: absolute;
+  z-index: 200;
+  opacity: 0%;
 }
 #home-page #title {
   color: white;
@@ -34,6 +40,74 @@
   text-transform: lowercase;
   font-size: 70px;
   font-weight: 30;
+}
+#home-page .home-block {
+  width: 80%;
+  margin: 0 auto;
+  height: 300px;
+  color: #242424;
+  max-width: 800px;
+}
+#home-page .home-block .home-paragraph {
+  text-align: center;
+  font-size: 19px;
+  line-height: 180%;
+}
+#home-page .home-block .home-paragraph strong {
+  font-size: 21px;
+  color: black;
+}
+#home-page .home-block .home-paragraph a {
+  transition: color 0.2s;
+  color: #3e4f81;
+  text-decoration: none;
+  background-color: white;
+}
+#home-page .home-block .home-paragraph a:hover {
+  text-decoration: underline;
+}
+#home-page .home-block .home-img {
+  overflow: hidden;
+  border-radius: 20px;
+}
+#home-page .home-block img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#home-page .half-right {
+  display: inline-block;
+  float: right;
+  height: 100%;
+  width: 45%;
+}
+#home-page .half-left {
+  display: inline-block;
+  float: left;
+  width: 45%;
+  height: 100%;
+}
+#home-page #blog-button {
+  position: relative;
+  transition: 0.3s;
+  font-size: 20px;
+  margin: 0 auto;
+  background-color: #7d54e3;
+  font-weight: 500;
+  text-transform: lowercase;
+  color: white;
+  font-weight: 100;
+  padding: 20px;
+  border: 1px solid #261944;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px #a7a7a7;
+}
+#home-page #blog-button:hover {
+  transform: scale(1.01);
+  box-shadow: 16px 16px 5px #a7a7a7;
+  background-color: #8a65e6;
+  cursor: pointer;
 }
 
 #threeJsCanvas {
