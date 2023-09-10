@@ -28,8 +28,7 @@ export default function Footer() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
-              gridGap: 20,
-              height: "100%",
+              gridGap: 20
             }}
           >
             <div className="subColumn">

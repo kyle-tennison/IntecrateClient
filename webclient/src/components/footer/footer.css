@@ -43,6 +43,9 @@
   opacity: 60%;
   cursor: pointer;
 }
+#footer .subColumn {
+  height: 100px;
+}
 #footer #col1 a {
   font-size: 12;
   font-weight: 100;
@@ -84,4 +87,4 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-} /*# sourceMappingURL=footer.css.map */
+}/*# sourceMappingURL=footer.css.map */
