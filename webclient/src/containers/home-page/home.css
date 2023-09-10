@@ -9,6 +9,7 @@
   width: 100%;
   color: white;
   overflow: hidden;
+  scroll-behavior: smooth;
 }
 #home-page #header {
   transition: 0.5s;
