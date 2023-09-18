@@ -19,6 +19,7 @@ export default function Login() {
     switch (buttonState) {
       case "enabled":
         button.disabled = false;
+        button.removeAttribute("style");
         break;
       case "disabled":
         button.disabled = true;
