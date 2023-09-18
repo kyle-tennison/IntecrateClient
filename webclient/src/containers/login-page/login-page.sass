@@ -3,105 +3,172 @@
 
 #login-page
     position: absolute
+    top: 65px
     width: 100%
-    height: 100%
-    overflow: hidden
+    height: calc(100% - 65px)
+    overflow: scroll
+
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+
+    .half-right
+        position: relative
+        display: inline-block
+        float: right
+        height: 100%
+        width: 59%
+
+    .half-left
+        position: relative
+        display: inline-block
+        float: left
+        width: 39% 
+        height: 100%
+
+    @media (max-width: 920px)
+        .half-right
+            width: 100%
+        .half-left
+            display: none
 
     .container
         position: relative
-        bottom: 150px
+        bottom: 80px
         height: 100%
+        border: none
 
 
         #login-block
+
             position: absolute
             top: 50%
             left: 50%
             transform: translate(-50%, -50%)
+            overflow: hidden
+
+            width: 400px
+            margin-top: 70px
 
             text-align: center
 
-            width: 400px
+            border-radius: 10px
 
-            h1
-                font-weight: 100
-                text-transform: lowercase
-                font-size: 40px
+            background-color: white
+            box-shadow: 15px 15px 30px 15px mix($spacegray, transparent, 50%)
 
-            
+            width: 70%
+            height: 70%
 
-            .text-entry
-                display: inline-block
-                transition: 0.3s
-                margin-bottom: 40px
-                width: 80%
-                border: 1px solid mix($spacegray, white, 20%)
-                input 
-                    display: inline-block
-                    color: $spacegray
-                    border: none
-                    font-family: 'Roboto', sans-serif
-                    font-size: 16px
-                    font-weight: 100
 
-                    // // padding: 5px 15px 5px 15px
+            .left 
+                margin: 0
+                overflow: visible
+
+                .container
+                    position: relative
+                    bottom: 0px
+                    width: 100%
+                    img 
+                        position: absolute
+                        top: 50%
+                        left: 50%
+                        transform: translate(-50%, -50%)
+                        object-fit: cover
+                        width: 100%
+
+
+            .right
+                margin-top: 40px
+                .container
+                    position: absolute
+                    top: 50%
+                    left: 50%
 
                     width: 90%
-                    height: 35px
-                    outline: none
 
-                border-radius: 5px
-                
-                box-shadow: 10px 10px 10px 5px mix($spacegray, white, 50%)
+                    transform: translate(-50%, -50%)
 
-            .text-entry:hover
-                box-shadow: 15px 15px 10px 5px mix($spacegray, white, 50%)
+                    background-color: white
+
+                    h1
+                        font-weight: 100
+                        text-transform: lowercase
+                        font-size: 40px
+
+                    .text-entry
+                        display: inline-block
+                        transition: 0.3s
+                        margin-bottom: 40px
+                        width: 80%
+                        input 
+                            display: inline-block
+                            color: $spacegray
+                            border: none
+                            font-family: 'Roboto', sans-serif
+                            font-size: 16px
+                            font-weight: 100
+
+                            // // padding: 5px 15px 5px 15px
+
+                            width: 90%
+                            height: 35px
+                            outline: none
+
+                        border-radius: 0px
+                        
+                        box-shadow: 4px 8px 10px 5px mix($spacegray, white, 50%)
+
+                    .text-entry:hover
+                        box-shadow: 8px 12px 15px 5px mix($spacegray, white, 50%)
 
 
-            #login-btn
-                transition: 0.3s
+                    #login-btn
+                        transition: 0.3s
 
-                display: inline-block
-                height: 35px
+                        display: inline-block
+                        height: 35px
 
-                position: relative 
-                top: 30px
+                        position: relative 
+                        top: 30px
 
-                padding: 10px 20px 10px 20px
+                        padding: 10px 20px 10px 20px
 
-                border-radius: 5px
-                border: 1px solid mix($spacegray, white, 20%)
+                        border-radius: 0px
+                        border: none
 
-                background-color: white
-                box-shadow: 10px 10px 10px 5px mix($spacegray, white, 50%)
+                        background-color: white
+                        box-shadow: 4px 8px 10px 5px mix($spacegray, white, 50%)
 
-                font-size: 16px
-                font-weight: 100 
-                color: $spacegray
-                font-family: 'Roboto', sans-serif
+                        font-size: 16px
+                        font-weight: 100 
+                        color: $spacegray
+                        font-family: 'Roboto', sans-serif
 
-                background: url('spinning.gif')
-                background-size: 0px 0px
-                background-repeat: no-repeat
-                background-position: center center
+                        background: url('spinning.gif')
+                        background-size: 0px 0px
+                        background-repeat: no-repeat
+                        background-position: center center
 
-            #login-btn:hover:enabled
-                transform: translateY(-2px)
-                box-shadow: 15px 15px 10px 5px mix($spacegray, white, 50%)
-                background-color: $urple
-                color: white
-                border-color: $spacegray
+                    #login-btn:hover:enabled
+                        transform: translateY(-1px)
+                        box-shadow: 8px 12px 15px 5px mix($spacegray, white, 50%)
+                        background-color: mix($urple, white, 80%)
+                        border-color: $spacegray
+                        cursor: pointer
+                        color: white
 
-            #login-btn:disabled
-                transform: translateY(4px)
-                box-shadow: 5px 5px 10px 5px mix($spacegray, white, 50%)
-                background-color: #f4f4f4
-                background-size: 40px 40px
-                color: #00000000
+                    #login-btn:disabled
+                        transform: translateY(2px)
+                        box-shadow: 3px 7px 10px 5px mix($spacegray, white, 50%)
+                        background-color: #e5e5e5
+                        background-size: 40px 40px
+                        color: #00000000
 
-            #error-box
-                color: #df4848
-                font-weight: 100
+                    #error-box
+                        color: #df4848
+                        font-weight: 100
+
 
 
 
