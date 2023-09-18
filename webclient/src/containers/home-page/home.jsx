@@ -3,7 +3,7 @@ import Header from "/src/components/header/header";
 import Footer from "/src/components/footer/footer";
 import BlenderAnimation from "./animation";
 import Fade from "react-reveal/Fade";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 import man_thinking from "./assets/man-thinking.jpg";
 import laser_cutter from "./assets/laser-cutter.jpg";
@@ -11,19 +11,17 @@ import kid_typing from "./assets/kid-typing.jpg";
 import { useEffect } from "react";
 
 export default function Home() {
-
-  const queryParameters = new URLSearchParams(window.location.search)
-  const fadeBar = queryParameters.get("fadeBar")
+  const queryParameters = new URLSearchParams(window.location.search);
+  const fadeBar = queryParameters.get("fadeBar");
 
   useEffect(() => {
     let header = document.getElementById("header");
 
-    if (fadeBar === '0'){
-      console.log('skipping fade')
-      header.style.transition = "0s"
-      header.style.opacity = 1
-    }
-    else {
+    if (fadeBar === "0") {
+      console.log("skipping fade");
+      header.style.transition = "0s";
+      header.style.opacity = 1;
+    } else {
       setTimeout(() => {
         header.style.opacity = 1;
       }, 4000);
@@ -92,10 +90,15 @@ export default function Home() {
             </div>
           </div>
           <h1 style={{ marginTop: "200px" }}>Everything coming soon</h1>
-          <div style={{ textAlign: "center" }}>   
-          <button id="blog-button" onClick={() => {window.location.href = "/dev-blog"}}>
-            Read the Development Blog
-          </button>
+          <div style={{ textAlign: "center" }}>
+            <button
+              id="blog-button"
+              onClick={() => {
+                window.location.href = "/dev-blog";
+              }}
+            >
+              Read the Development Blog
+            </button>
           </div>
         </Fade>
         <Footer />

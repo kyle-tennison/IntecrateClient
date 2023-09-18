@@ -14,9 +14,30 @@ export default function Header() {
       }}
     >
       <img className="logo icon" src={icon} />
-      <button className="header-btn default" onClick={() => {window.location.href = "/home?fadeBar=0"}}>Home</button>
-      <button className="header-btn default" onClick={() => {window.location.href = "/about"}}>About Us</button>
-      <button className="header-btn default" onClick={() => {window.location.href = "/dev-blog"}}>Alpha Progression</button>
+      <button
+        className="header-btn default"
+        onClick={() => {
+          window.location.href = "/home?fadeBar=0";
+        }}
+      >
+        Home
+      </button>
+      <button
+        className="header-btn default"
+        onClick={() => {
+          window.location.href = "/about";
+        }}
+      >
+        About Us
+      </button>
+      <button
+        className="header-btn default"
+        onClick={() => {
+          window.location.href = "/dev-blog";
+        }}
+      >
+        Alpha Progression
+      </button>
       <ActionButtons></ActionButtons>
     </div>
   );

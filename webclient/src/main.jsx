@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./global.css";
 import Home from "./containers/home-page/home";
-import DevBlog from "./containers/dev-blog/dev-blog"
+import DevBlog from "./containers/dev-blog/dev-blog";
 import Signup from "./containers/signup-page/signup-page";
 import Login from "./containers/login-page/login-page";
 import About from "./containers/about-page/about-page";
