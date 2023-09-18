@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { login } from "/src/api.js";
 
 import login_image from "./assets/login-image.jpg";
+import login_background from "./assets/login-background.jpg";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -47,7 +48,6 @@ export default function Login() {
       // If it looks good locally, we'll try to login
       setButtonState("loading");
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
       let response = await login(email, password);
 
       if (response.isError) {
@@ -83,6 +83,8 @@ export default function Login() {
         setErrorMsg("");
         if (email.length !== 0 && password.length !== 0)
           setButtonState("enabled");
+        else
+          setButtonState("disabled");
       }
     }
     return emailIsGood;
@@ -103,13 +105,15 @@ export default function Login() {
         setErrorMsg("");
         if (email.length !== 0 && password.length !== 0)
           setButtonState("enabled");
+        else
+          setButtonState("disabled");
       }
     }
     return passwordIsGood;
   }
 
   return (
-    <div id="login-page">
+    <div id="login-page" style={{backgroundImage: `url(${login_background})`}}>
       <div className="container">
         <div id="login-block">
           <div className="left half-left">
