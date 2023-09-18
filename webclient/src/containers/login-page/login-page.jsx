@@ -83,8 +83,7 @@ export default function Login() {
         setErrorMsg("");
         if (email.length !== 0 && password.length !== 0)
           setButtonState("enabled");
-        else
-          setButtonState("disabled");
+        else setButtonState("disabled");
       }
     }
     return emailIsGood;
@@ -105,15 +104,17 @@ export default function Login() {
         setErrorMsg("");
         if (email.length !== 0 && password.length !== 0)
           setButtonState("enabled");
-        else
-          setButtonState("disabled");
+        else setButtonState("disabled");
       }
     }
     return passwordIsGood;
   }
 
   return (
-    <div id="login-page" style={{backgroundImage: `url(${login_background})`}}>
+    <div
+      id="login-page"
+      style={{ backgroundImage: `url(${login_background})` }}
+    >
       <div className="container">
         <div id="login-block">
           <div className="left half-left">
