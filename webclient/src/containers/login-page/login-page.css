@@ -70,7 +70,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   width: 100%;
 }
 #login-page .container #login-block .right {
@@ -126,7 +126,7 @@
   font-weight: 100;
   color: #242424;
   font-family: "Roboto", sans-serif;
-  background: url("spinning.gif");
+  background-image: url("/spinning.gif");
   background-size: 0px 0px;
   background-repeat: no-repeat;
   background-position: center center;
@@ -149,4 +149,4 @@
 #login-page .container #login-block .right .container #error-box {
   color: #df4848;
   font-weight: 100;
-} /*# sourceMappingURL=login-page.css.map */
+}/*# sourceMappingURL=login-page.css.map */
