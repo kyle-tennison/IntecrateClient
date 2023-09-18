@@ -7,10 +7,28 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background-image: linear-gradient(to bottom right, #cc58d0, #7d91eb);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+#login-page .half-right {
+  position: relative;
+  display: inline-block;
+  float: right;
+  height: 100%;
+  width: 59%;
+}
+#login-page .half-left {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: 39%;
+  height: 100%;
 }
 #login-page .container {
   position: relative;
-  bottom: 150px;
+  bottom: 80px;
   height: 100%;
 }
 #login-page .container #login-block {
@@ -18,15 +36,52 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
+  overflow: hidden;
   width: 400px;
+  margin-top: 70px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 15px 15px 30px 15px rgba(36, 36, 36, 0.5);
+  width: 70%;
+  height: 70%;
 }
-#login-page .container #login-block h1 {
+#login-page .container #login-block .left {
+  margin: 0;
+  overflow: hidden;
+  background-color: red;
+}
+#login-page .container #login-block .left .container {
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+}
+#login-page .container #login-block .left .container img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 100%;
+}
+#login-page .container #login-block .right {
+  margin-top: 40px;
+}
+#login-page .container #login-block .right .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+}
+#login-page .container #login-block .right .container h1 {
   font-weight: 100;
   text-transform: lowercase;
   font-size: 40px;
 }
-#login-page .container #login-block .text-entry {
+#login-page .container #login-block .right .container .text-entry {
   display: inline-block;
   transition: 0.3s;
   margin-bottom: 40px;
@@ -35,7 +90,7 @@
   border-radius: 5px;
   box-shadow: 10px 10px 10px 5px #929292;
 }
-#login-page .container #login-block .text-entry input {
+#login-page .container #login-block .right .container .text-entry input {
   display: inline-block;
   color: #242424;
   border: none;
@@ -46,10 +101,10 @@
   height: 35px;
   outline: none;
 }
-#login-page .container #login-block .text-entry:hover {
+#login-page .container #login-block .right .container .text-entry:hover {
   box-shadow: 15px 15px 10px 5px #929292;
 }
-#login-page .container #login-block #login-btn {
+#login-page .container #login-block .right .container #login-btn {
   transition: 0.3s;
   display: inline-block;
   height: 35px;
@@ -69,21 +124,20 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
-#login-page .container #login-block #login-btn:hover:enabled {
+#login-page .container #login-block .right .container #login-btn:hover:enabled {
   transform: translateY(-2px);
   box-shadow: 15px 15px 10px 5px #929292;
-  background-color: #7d54e3;
+  background-color: #e5ddf9;
   color: white;
-  border-color: #242424;
 }
-#login-page .container #login-block #login-btn:disabled {
+#login-page .container #login-block .right .container #login-btn:disabled {
   transform: translateY(4px);
   box-shadow: 5px 5px 10px 5px #929292;
   background-color: #f4f4f4;
   background-size: 40px 40px;
   color: rgba(0, 0, 0, 0);
 }
-#login-page .container #login-block #error-box {
+#login-page .container #login-block .right .container #error-box {
   color: #df4848;
   font-weight: 100;
-}/*# sourceMappingURL=login-page.css.map */
+} /*# sourceMappingURL=login-page.css.map */
