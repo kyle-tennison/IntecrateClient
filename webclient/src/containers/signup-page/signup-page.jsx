@@ -2,6 +2,7 @@ import "./signup-page.css";
 
 import Header from "/src/components/header/header";
 import { useEffect, useState } from "react";
+import { signup } from "/src/util/api.js";
 
 import signup_background from "./assets/signup-background.jpg";
 import signup_image from "./assets/signup-image.jpg";
@@ -13,6 +14,7 @@ export default function Signup() {
   const [password2, setPassword2] = useState("");
   const [terms, setTerms] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [bdayText, setBdayText] = useState("");
 
   const [buttonState, setButtonState] = useState("disabled");
 
@@ -43,7 +45,72 @@ export default function Signup() {
    */
   function handleSubmit(event) {
     event.preventDefault();
-    console.debug("Handling Submit");
+    console.log("Signup Submitted");
+
+    if (!validateAll()) {
+      console.error("Signup form did not meet criteria");
+      return;
+    }
+
+    setButtonState("loading");
+  }
+
+  /**
+   * Updates birthday text as it is being typed
+   * @param {event} event
+   */
+  const handleBirthdayInput = (e) => {
+    let bdayText = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+
+    if (bdayText.length > 0) {
+      if (bdayText.length <= 2) {
+        bdayText = bdayText;
+      } else if (bdayText.length <= 4) {
+        bdayText = bdayText.slice(0, 2) + "/" + bdayText.slice(2);
+      } else {
+        bdayText =
+          bdayText.slice(0, 2) +
+          "/" +
+          bdayText.slice(2, 4) +
+          "/" +
+          bdayText.slice(4, 8);
+        bdayText = bdayText.slice(0, 10);
+      }
+    }
+    setBdayText(bdayText);
+  };
+
+  /**
+   * Validates birthday syntax
+   */
+  function validateBirthday(recurse = true) {
+    const dateParts = bdayText.split("/");
+    if (dateParts.length !== 3) {
+      if (bdayText !== "") setErrorMsg("whoops, double check your birthday");
+      if (recurse) validateAll();
+      return false;
+    }
+
+    const [month, day, year] = dateParts.map(Number);
+
+    if (
+      isNaN(month) ||
+      isNaN(day) ||
+      isNaN(year) ||
+      month < 1 ||
+      month > 12 ||
+      day < 1 ||
+      day > 31 ||
+      year < new Date().getFullYear() - 130 ||
+      year > new Date().getFullYear()
+    ) {
+      if (bdayText !== "") setErrorMsg("your birthday doesn't look right...");
+      if (recurse) validateAll();
+      return false;
+    } else {
+      if (recurse) validateAll();
+      return true;
+    }
   }
 
   /**
@@ -103,17 +170,18 @@ export default function Signup() {
       validatePassword(false),
       passwordsMatch(false),
       validateEmail(false),
+      validateBirthday(false),
       username !== "",
       terms === true,
     ];
 
     if (checks.includes(false)) {
-      console.debug("checks failed", terms);
+      console.debug("validation failed");
       setButtonState("disabled");
       return false;
     } else {
-      console.debug("checks passed", terms);
       setButtonState("enabled");
+      console.debug("validation passed");
       return true;
     }
   }
@@ -196,6 +264,18 @@ export default function Signup() {
                     }}
                     id="password2"
                     placeholder="Retype Password"
+                  />
+                </div>
+                <div className="text-entry">
+                  <input
+                    type="text"
+                    value={bdayText}
+                    onChange={handleBirthdayInput}
+                    onBlur={(e) => {
+                      validateBirthday(e);
+                    }}
+                    id="bday"
+                    placeholder="Birthday (MM/DD/YYYY)"
                   />
                 </div>
                 <div className="checkbox-entry">
