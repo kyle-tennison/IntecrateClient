@@ -48,10 +48,9 @@ export default function Signup() {
 
   /**
    * Validates email syntax
+   * @returns bool
    */
   function validateEmail(recurse = true) {
-    // console.debug("Validating email syntax");
-
     var re = /\S+@\S+\.\S+/;
     let emailIsGood = re.test(email);
 
@@ -69,19 +68,17 @@ export default function Signup() {
 
   /**
    * Validates password syntax
+   * @returns bool
    */
   function validatePassword(recurse = true) {
-    // console.debug("Validating password syntax");
-
     return true;
   }
 
   /**
    * Checks if the two passwords match
+   * @returns bool
    */
   function passwordsMatch(recurse = true) {
-    // console.debug("Checking if passwords match");
-
     if (password !== password2) {
       if (password2 !== "") {
         setErrorMsg(
@@ -101,7 +98,6 @@ export default function Signup() {
    * @returns bool
    */
   function validateAll() {
-    // console.debug("validateAll() reading terms as", terms)
     setErrorMsg("");
     let checks = [
       validatePassword(false),
@@ -122,12 +118,10 @@ export default function Signup() {
     }
   }
 
-
   /**
    * Force update terms
    */
   useEffect(() => {
-    console.debug("reading terms as", terms);
     validateAll();
   }, [terms]);
 
@@ -210,8 +204,6 @@ export default function Signup() {
                     id="terms"
                     value={terms}
                     onChange={(e) => {
-
-                      console.debug("setting terms to", e.target.checked)
                       setTerms(e.target.checked);
                     }}
                   />
