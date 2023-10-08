@@ -138,7 +138,41 @@ export default function Signup() {
    * @returns bool
    */
   function validatePassword(recurse = true) {
-    return true;
+
+    let valid = false
+    let error="sorry, your password "
+
+    switch (true){
+      case (password.length < 8):
+        error += "is too short"
+        break; 
+      case !/[!@#$%^&*()_+{}\[\]:;<>,.?~\\|/]/.test(password):
+        error += "doesn't contain a special character"
+        break;
+      case !/\d/.test(password):
+        error += "doesn't contain a number"
+        break
+      case !/[a-z]/.test(password):
+        error += "doesn't contain a lowercase letter"
+        break;
+      case !/[A-Z]/.test(password):
+        error += "doesn't contain an uppercase letter"
+        break;
+      default:
+        valid = true;
+        break;
+    }
+
+    if (!valid){
+      if (password !== "") setErrorMsg(error)
+      if (recurse) validateAll()
+      return false
+    }
+    else{
+      if (recurse) validateAll()
+      return true
+    }
+    
   }
 
   /**
