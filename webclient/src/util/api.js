@@ -91,3 +91,13 @@ export async function login(email, password) {
     password: password,
   });
 }
+
+/**
+ * Send signup request
+ * @param {string} email
+ * @param {string} password
+ * @param {string} username
+ */
+export async function signup(email, password, username){
+  // return async post("")
+}
