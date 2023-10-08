@@ -2,6 +2,15 @@
   font-family: "Roboto", sans-serif;
 }
 
+.link {
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #929292;
+  cursor: pointer;
+}
+
 #dev-blog {
   overflow: hidden;
   position: absolute;
@@ -66,4 +75,4 @@
   #dev-blog #banner h1 {
     font-size: 60px;
   }
-} /*# sourceMappingURL=dev-blog.css.map */
+}/*# sourceMappingURL=dev-blog.css.map */

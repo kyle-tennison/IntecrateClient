@@ -2,6 +2,15 @@
   font-family: "Roboto", sans-serif;
 }
 
+.link {
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #929292;
+  cursor: pointer;
+}
+
 #header {
   color: red;
   background-color: #242424;
@@ -90,4 +99,4 @@
 #header #profile-btn:hover {
   background-color: white;
   color: #242424;
-} /*# sourceMappingURL=header.css.map */
+}/*# sourceMappingURL=header.css.map */

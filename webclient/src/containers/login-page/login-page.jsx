@@ -2,7 +2,7 @@ import "./login-page.css";
 import Header from "/src/components/header/header";
 import Footer from "/src/components/footer/footer";
 import { useEffect, useState, useRef } from "react";
-import { login } from "/src/api.js";
+import { login } from "/src/util/api.js";
 
 import login_image from "./assets/login-image.jpg";
 import login_background from "./assets/login-background.jpg";

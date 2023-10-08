@@ -2,6 +2,15 @@
   font-family: "Roboto", sans-serif;
 }
 
+.link {
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #929292;
+  cursor: pointer;
+}
+
 #footer {
   position: absolute;
   bottom: 0;
@@ -88,4 +97,4 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-} /*# sourceMappingURL=footer.css.map */
+}/*# sourceMappingURL=footer.css.map */

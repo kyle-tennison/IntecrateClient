@@ -2,6 +2,15 @@
   font-family: "Roboto", sans-serif;
 }
 
+.link {
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #929292;
+  cursor: pointer;
+}
+
 #login-page {
   position: absolute;
   top: 65px;

@@ -1,1 +1,173 @@
-/*# sourceMappingURL=signup-page.css.map */
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.link {
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #929292;
+  cursor: pointer;
+}
+
+#signup-page {
+  position: absolute;
+  top: 65px;
+  width: 100%;
+  height: calc(100% - 65px);
+  overflow: hidden;
+  padding-bottom: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+#signup-page .half-right {
+  position: relative;
+  display: inline-block;
+  float: right;
+  height: 100%;
+  width: 59%;
+}
+#signup-page .half-left {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: 39%;
+  height: 100%;
+}
+@media (max-width: 920px) {
+  #signup-page .half-right {
+    width: 100%;
+  }
+  #signup-page .half-left {
+    display: none;
+  }
+}
+#signup-page input[type=checkbox] {
+  accent-color: #242424;
+  border-radius: 0;
+}
+#signup-page .container {
+  position: relative;
+  bottom: 80px;
+  height: 100%;
+  border: none;
+}
+#signup-page .container #signup-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  width: 400px;
+  margin-top: 150px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 15px 15px 30px 15px rgba(36, 36, 36, 0.5);
+  width: 70%;
+  height: 600px;
+}
+#signup-page .container #signup-block .left {
+  margin: 0;
+  overflow: visible;
+}
+#signup-page .container #signup-block .left .container {
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  overflow: hidden;
+}
+#signup-page .container #signup-block .left .container img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  min-height: 100%;
+}
+#signup-page .container #signup-block .right {
+  margin-top: 40px;
+}
+#signup-page .container #signup-block .right .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+}
+#signup-page .container #signup-block .right .container h1 {
+  font-weight: 100;
+  text-transform: lowercase;
+  font-size: 40px;
+}
+#signup-page .container #signup-block .right .container .text-entry {
+  display: inline-block;
+  transition: 0.3s;
+  margin-bottom: 40px;
+  width: 80%;
+  max-width: 325px;
+  border-radius: 0px;
+  box-shadow: 4px 8px 10px 5px #929292;
+}
+#signup-page .container #signup-block .right .container .text-entry input {
+  display: inline-block;
+  color: #242424;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  width: 90%;
+  height: 35px;
+  outline: none;
+}
+#signup-page .container #signup-block .right .container .text-entry:hover {
+  box-shadow: 8px 12px 15px 5px #929292;
+}
+#signup-page .container #signup-block .right .container .checkbox-entry {
+  color: #242424;
+  font-weight: 100;
+}
+#signup-page .container #signup-block .right .container #signup-btn {
+  transition: 0.3s;
+  display: inline-block;
+  height: 35px;
+  position: relative;
+  top: 30px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 0px;
+  border: none;
+  background-color: white;
+  box-shadow: 4px 8px 10px 5px #929292;
+  font-size: 16px;
+  font-weight: 100;
+  color: #242424;
+  font-family: "Roboto", sans-serif;
+  background-image: url("/spinning.gif");
+  background-size: 0px 0px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+#signup-page .container #signup-block .right .container #signup-btn:hover:enabled {
+  transform: translateY(-1px);
+  box-shadow: 8px 12px 15px 5px #929292;
+  background-color: #9776e9;
+  border-color: #242424;
+  cursor: pointer;
+  color: white;
+}
+#signup-page .container #signup-block .right .container #signup-btn:disabled {
+  transform: translateY(2px);
+  box-shadow: 3px 7px 10px 5px #929292;
+  background-color: #e5e5e5;
+  background-size: 40px 40px;
+  color: rgba(0, 0, 0, 0);
+}
+#signup-page .container #signup-block .right .container #error-box {
+  color: #df4848;
+  font-weight: 100;
+}/*# sourceMappingURL=signup-page.css.map */
