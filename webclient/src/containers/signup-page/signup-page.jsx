@@ -3,7 +3,7 @@ import "./signup-page.css";
 import Header from "/src/components/header/header";
 import { useEffect, useState } from "react";
 import { signup } from "/src/util/api.js";
-
+import { useCookies } from "react-cookie";
 import signup_background from "./assets/signup-background.jpg";
 import signup_image from "./assets/signup-image.jpg";
 
@@ -14,7 +14,8 @@ export default function Signup() {
   const [password2, setPassword2] = useState("");
   const [terms, setTerms] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [bdayText, setBdayText] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [cookies, setCookie] = useCookies(['api_key'])
 
   const [buttonState, setButtonState] = useState("disabled");
 
@@ -43,7 +44,7 @@ export default function Signup() {
   /**
    * Handles Signup Form Submit
    */
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     console.log("Signup Submitted");
 
@@ -53,6 +54,34 @@ export default function Signup() {
     }
 
     setButtonState("loading");
+
+    let response = await signup(
+      email,
+      password,
+      username,
+      birthday,
+    )
+
+    if (response.isError) {
+      // Display an error if there was a problem fetching
+      setButtonState("disabled");
+      setErrorMsg(response.content);
+    } else {
+      // Check if the login was valid
+      if (response.content.success) {
+        console.log("valid signup");
+
+        let d = new Date();
+        d.setTime(d.getTime() + (48*60*60*1000));
+        setCookie('api_key', response.content.user.apiKey, { path: '/',  expires: d})
+
+        setButtonState("enabled");
+      } else {
+        console.error(response.content.message);
+        setErrorMsg(response.content.message);
+        setButtonState("disabled");
+      }
+    }
   }
 
   /**
@@ -60,33 +89,33 @@ export default function Signup() {
    * @param {event} event
    */
   const handleBirthdayInput = (e) => {
-    let bdayText = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+    let birthday = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
 
-    if (bdayText.length > 0) {
-      if (bdayText.length <= 2) {
-        bdayText = bdayText;
-      } else if (bdayText.length <= 4) {
-        bdayText = bdayText.slice(0, 2) + "/" + bdayText.slice(2);
+    if (birthday.length > 0) {
+      if (birthday.length <= 2) {
+        birthday = birthday;
+      } else if (birthday.length <= 4) {
+        birthday = birthday.slice(0, 2) + "/" + birthday.slice(2);
       } else {
-        bdayText =
-          bdayText.slice(0, 2) +
+        birthday =
+          birthday.slice(0, 2) +
           "/" +
-          bdayText.slice(2, 4) +
+          birthday.slice(2, 4) +
           "/" +
-          bdayText.slice(4, 8);
-        bdayText = bdayText.slice(0, 10);
+          birthday.slice(4, 8);
+        birthday = birthday.slice(0, 10);
       }
     }
-    setBdayText(bdayText);
+    setBirthday(birthday);
   };
 
   /**
    * Validates birthday syntax
    */
   function validateBirthday(recurse = true) {
-    const dateParts = bdayText.split("/");
+    const dateParts = birthday.split("/");
     if (dateParts.length !== 3) {
-      if (bdayText !== "") setErrorMsg("whoops, double check your birthday");
+      if (birthday !== "") setErrorMsg("whoops, double check your birthday");
       if (recurse) validateAll();
       return false;
     }
@@ -104,7 +133,7 @@ export default function Signup() {
       year < new Date().getFullYear() - 130 ||
       year > new Date().getFullYear()
     ) {
-      if (bdayText !== "") setErrorMsg("your birthday doesn't look right...");
+      if (birthday !== "") setErrorMsg("your birthday doesn't look right...");
       if (recurse) validateAll();
       return false;
     } else {
@@ -303,7 +332,7 @@ export default function Signup() {
                 <div className="text-entry">
                   <input
                     type="text"
-                    value={bdayText}
+                    value={birthday}
                     onChange={handleBirthdayInput}
                     onBlur={(e) => {
                       validateBirthday(e);

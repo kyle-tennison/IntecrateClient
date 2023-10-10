@@ -98,6 +98,12 @@ export async function login(email, password) {
  * @param {string} password
  * @param {string} username
  */
-export async function signup(email, password, username){
-  // return async post("")
+export async function signup(email, password, username, birthday){
+  return await post("signup",
+  {
+    name: username,
+    email: email,
+    password: password,
+    birthday: birthday,
+  })
 }

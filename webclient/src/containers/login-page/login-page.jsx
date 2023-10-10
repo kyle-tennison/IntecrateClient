@@ -3,7 +3,7 @@ import Header from "/src/components/header/header";
 import Footer from "/src/components/footer/footer";
 import { useEffect, useState, useRef } from "react";
 import { login } from "/src/util/api.js";
-
+import { useCookies } from "react-cookie";
 import login_image from "./assets/login-image.jpg";
 import login_background from "./assets/login-background.jpg";
 
@@ -11,6 +11,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [cookies, setCookie] = useCookies(['api_key'])
 
   const [buttonState, setButtonState] = useState("disabled");
 
@@ -56,12 +57,18 @@ export default function Login() {
         setErrorMsg(response.content);
       } else {
         // Check if the login was valid
-        if (response.content.validLogin) {
-          console.log("valid login!");
+        if (response.content.success) {
+          console.log("valid login");
+
+          let d = new Date();
+          d.setTime(d.getTime() + (48*60*60*1000));
+          setCookie('api_key', response.content.user.apiKey, { path: '/',  expires: d})
+
           setButtonState("enabled");
         } else {
-          console.error(response.content.errMsg);
-          setErrorMsg(response.content.errMsg);
+          console.log("bad login")
+          console.error(response.content.message);
+          setErrorMsg(response.content.message);
           setButtonState("disabled");
         }
       }
