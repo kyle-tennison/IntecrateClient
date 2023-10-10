@@ -11,7 +11,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [cookies, setCookie] = useCookies(['api_key'])
+  const [cookies, setCookie] = useCookies(["api_key"]);
 
   const [buttonState, setButtonState] = useState("disabled");
 
@@ -61,12 +61,15 @@ export default function Login() {
           console.log("valid login");
 
           let d = new Date();
-          d.setTime(d.getTime() + (48*60*60*1000));
-          setCookie('api_key', response.content.user.apiKey, { path: '/',  expires: d})
+          d.setTime(d.getTime() + 48 * 60 * 60 * 1000);
+          setCookie("api_key", response.content.user.apiKey, {
+            path: "/",
+            expires: d,
+          });
 
           setButtonState("enabled");
         } else {
-          console.log("bad login")
+          console.log("bad login");
           console.error(response.content.message);
           setErrorMsg(response.content.message);
           setButtonState("disabled");

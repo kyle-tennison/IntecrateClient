@@ -6,7 +6,7 @@
  * Run a GET request to the Intecrate API
  * @param {string} endpoint
  */
-async function get(endpoint) {}
+async function get(endpoint) { }
 
 /**
  * Run a POST request to the Intecrate API
@@ -98,12 +98,12 @@ export async function login(email, password) {
  * @param {string} password
  * @param {string} username
  */
-export async function signup(email, password, username, birthday){
+export async function signup(email, password, username, birthday) {
   return await post("signup",
-  {
-    name: username,
-    email: email,
-    password: password,
-    birthday: birthday,
-  })
+    {
+      name: username,
+      email: email,
+      password: password,
+      birthday: birthday,
+    })
 }

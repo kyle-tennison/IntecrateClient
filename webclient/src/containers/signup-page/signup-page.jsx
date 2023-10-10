@@ -15,7 +15,7 @@ export default function Signup() {
   const [terms, setTerms] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [cookies, setCookie] = useCookies(['api_key'])
+  const [cookies, setCookie] = useCookies(["api_key"]);
 
   const [buttonState, setButtonState] = useState("disabled");
 
@@ -55,12 +55,7 @@ export default function Signup() {
 
     setButtonState("loading");
 
-    let response = await signup(
-      email,
-      password,
-      username,
-      birthday,
-    )
+    let response = await signup(email, password, username, birthday);
 
     if (response.isError) {
       // Display an error if there was a problem fetching
@@ -72,8 +67,11 @@ export default function Signup() {
         console.log("valid signup");
 
         let d = new Date();
-        d.setTime(d.getTime() + (48*60*60*1000));
-        setCookie('api_key', response.content.user.apiKey, { path: '/',  expires: d})
+        d.setTime(d.getTime() + 48 * 60 * 60 * 1000);
+        setCookie("api_key", response.content.user.apiKey, {
+          path: "/",
+          expires: d,
+        });
 
         setButtonState("enabled");
       } else {
@@ -167,41 +165,38 @@ export default function Signup() {
    * @returns bool
    */
   function validatePassword(recurse = true) {
+    let valid = false;
+    let error = "sorry, your password ";
 
-    let valid = false
-    let error="sorry, your password "
-
-    switch (true){
-      case (password.length < 8):
-        error += "is too short"
-        break; 
+    switch (true) {
+      case password.length < 8:
+        error += "is too short";
+        break;
       case !/[!@#$%^&*()_+{}\[\]:;<>,.?~\\|/]/.test(password):
-        error += "doesn't contain a special character"
+        error += "doesn't contain a special character";
         break;
       case !/\d/.test(password):
-        error += "doesn't contain a number"
-        break
+        error += "doesn't contain a number";
+        break;
       case !/[a-z]/.test(password):
-        error += "doesn't contain a lowercase letter"
+        error += "doesn't contain a lowercase letter";
         break;
       case !/[A-Z]/.test(password):
-        error += "doesn't contain an uppercase letter"
+        error += "doesn't contain an uppercase letter";
         break;
       default:
         valid = true;
         break;
     }
 
-    if (!valid){
-      if (password !== "") setErrorMsg(error)
-      if (recurse) validateAll()
-      return false
+    if (!valid) {
+      if (password !== "") setErrorMsg(error);
+      if (recurse) validateAll();
+      return false;
+    } else {
+      if (recurse) validateAll();
+      return true;
     }
-    else{
-      if (recurse) validateAll()
-      return true
-    }
-    
   }
 
   /**

@@ -7,23 +7,18 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
 export default function ActionButtons() {
-
-  const [cookies, setCookie] = useCookies(['api_key'])
-  const [isLoggedIn, setLoggedIn] = useState(false)
+  const [cookies, setCookie] = useCookies(["api_key"]);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
+    let isLoggedIn = false;
 
-    let isLoggedIn = false
-
-    if (cookies.api_key !== undefined){
-      setLoggedIn(true)
+    if (cookies.api_key !== undefined) {
+      setLoggedIn(true);
     }
 
-    console.log("reading cookies as", cookies.api_key)
-
-
-  }, [])
-
+    console.log("reading cookies as", cookies.api_key);
+  }, []);
 
   return (
     <>
@@ -33,7 +28,7 @@ export default function ActionButtons() {
         onClick={() => {
           window.location.href = "/signup";
         }}
-        style={{display: isLoggedIn? "none" : "block" }}
+        style={{ display: isLoggedIn ? "none" : "block" }}
       >
         Sign Up
       </button>
@@ -43,7 +38,7 @@ export default function ActionButtons() {
         onClick={() => {
           window.location.href = "/login";
         }}
-        style={{display: isLoggedIn? "none" : "block" }}
+        style={{ display: isLoggedIn ? "none" : "block" }}
       >
         Login
       </button>
@@ -53,7 +48,7 @@ export default function ActionButtons() {
         onClick={() => {
           window.location.href = "/profile";
         }}
-        style={{display: isLoggedIn? "block" : "none" }}
+        style={{ display: isLoggedIn ? "block" : "none" }}
       >
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg" />
         <a>My Profile</a>

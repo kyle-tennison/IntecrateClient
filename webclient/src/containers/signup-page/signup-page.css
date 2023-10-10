@@ -111,8 +111,6 @@
   margin-bottom: 40px;
   width: 80%;
   max-width: 325px;
-  border-radius: 0px;
-  box-shadow: 4px 8px 10px 5px #929292;
 }
 #signup-page .container #signup-block .right .container .text-entry input {
   display: inline-block;
@@ -124,6 +122,8 @@
   width: 90%;
   height: 35px;
   outline: none;
+  border-radius: 0px;
+  box-shadow: 4px 8px 10px 5px #929292;
 }
 #signup-page .container #signup-block .right .container .text-entry:hover {
   box-shadow: 8px 12px 15px 5px #929292;
