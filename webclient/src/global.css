@@ -1,3 +1,12 @@
 * {
   font-family: "Roboto", sans-serif;
-} /*# sourceMappingURL=global.css.map */
+}
+
+.link {
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #929292;
+  cursor: pointer;
+}/*# sourceMappingURL=global.css.map */
