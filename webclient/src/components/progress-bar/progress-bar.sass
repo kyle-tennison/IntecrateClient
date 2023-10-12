@@ -1,0 +1,36 @@
+@import '../../global.sass'
+
+
+#progress-bar 
+    position: relative
+    height: var(--height, 20px) !important
+    background-color: $spacegray
+    border: 1px solid $spacegray
+    border-radius: 1.5em
+    color: white
+
+
+#progress-bar::before 
+    content: ""
+    display: flex
+    align-items: center
+    position: absolute
+    width: calc(var(--percent, 0) * 1%)
+    min-width: 2rem
+    max-width: calc(100% - 1em)
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)
+    animation: gradient 15s ease infinite
+    background-size: 400% 400%
+    border-radius: 1em
+    padding: calc(var(--height, 20px) / 2)
+
+@keyframes gradient 
+    0% 
+        background-position: 0% 50%
+    
+    50% 
+        background-position: 100% 50%
+    
+    100% 
+        background-position: 0% 50%
+    

@@ -15,6 +15,7 @@
   width: 100%;
   height: 900px;
   overflow: hidden;
+  text-transform: lowercase;
   margin-top: 65px;
   color: #242424;
 }
@@ -43,11 +44,13 @@
   width: 20px;
   margin: 0;
 }
-#profile-page #left .stat-row {
+#profile-page .stat-row {
   margin-left: 25%;
   padding-top: 10px;
 }
-#profile-page #left .stat-row a {
+#profile-page .stat-row a {
+  position: relative;
+  bottom: 3px;
   padding-left: 20px;
 }
 #profile-page #right {
@@ -63,13 +66,90 @@
   margin-left: 10px;
   margin-right: 30px;
   padding-bottom: 10px;
-  text-transform: lowercase;
 }
 #profile-page #right h2 {
-  font-weight: 500;
+  font-weight: 300;
   padding-bottom: 3px;
   margin-left: 15px;
   margin-right: 50px;
+}
+#profile-page #right #challenge-block {
+  transition: 0.3s;
+  height: 150px;
+  overflow: hidden;
+  border: 1px solid #242424;
+  border-radius: 10px;
+  margin-right: 40px;
+  margin-left: 20px;
+  box-shadow: 0px 5px 10px #505050;
+}
+#profile-page #right #challenge-block .icon {
+  width: 20px;
+  margin: 0;
+}
+#profile-page #right #challenge-block .left {
+  float: left;
+  width: 20%;
+  height: 100%;
+  background-color: red;
+}
+#profile-page #right #challenge-block .right {
+  float: right;
+  width: 80%;
+  height: 100%;
+}
+#profile-page #right #challenge-block .right #challenge-info {
+  float: left;
+  width: 70%;
+}
+#profile-page #right #challenge-block .right #challenge-controls {
+  right: 0;
+  width: 30%;
+  float: right;
+}
+#profile-page #right #challenge-block .right #challenge-controls button {
+  transition: 0.2s;
+  margin-top: 20%;
+  color: white;
+  background-color: #4b4ea6;
+  border: 1px solid #242424;
+  border-radius: 10px;
+  width: 60%;
+  margin-left: 10%;
+  padding: 10px 5px 10px 5px;
+  font-weight: 100;
+  font-size: 17px;
+}
+#profile-page #right #challenge-block .right #challenge-controls button:hover {
+  background-color: white;
+  border-color: #4b4ea6;
+  color: #4b4ea6;
+  cursor: pointer;
+}
+#profile-page #right #challenge-block .right #challenge-controls #progress-bar {
+  position: relative;
+  top: 20px;
+  width: 80%;
+}
+#profile-page #right #challenge-block img {
+  min-height: 100%;
+  max-width: 100%;
+}
+#profile-page #right #challenge-block h1 {
+  border-bottom: 1px solid #a7a7a7;
+  padding-bottom: 2px;
+  margin: 10px 80px 7px 10px;
+  font-size: 30px;
+}
+#profile-page #right #challenge-block .stat-row {
+  margin-left: 10px;
+}
+#profile-page #right #challenge-block .stat-row a {
+  padding-left: 10px;
+}
+#profile-page #right #challenge-block:hover {
+  transform: translate(0px, -2px);
+  box-shadow: 0px 7px 10px #505050;
 }
 @media (max-width: 920px) {
   #profile-page #left {

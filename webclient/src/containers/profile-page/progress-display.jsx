@@ -12,15 +12,15 @@ export function ProgressDisplay(){
 
     return <div id="progress-display">
         <div className="stat-row">
-            <img class="icon" src={fire_icon}/>
+            <img className="icon" src={fire_icon}/>
             <a>{activeChallengesText}</a>
         </div>
         <div className="stat-row">
-            <img class="icon" src={rocket_icon}/>
+            <img className="icon" src={rocket_icon}/>
             <a>{streakText}</a>
         </div>
         <div className="stat-row">
-            <img class="icon" src={trophy_icon}/>
+            <img className="icon" src={trophy_icon}/>
             <a>{completedChallengesText}</a>
         </div>
 
