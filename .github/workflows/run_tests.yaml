@@ -30,7 +30,6 @@ jobs:
 
       - name: Eslint
         run: |
-          npm install -g npx
           npx eslint .
 
       - name: Prettier
