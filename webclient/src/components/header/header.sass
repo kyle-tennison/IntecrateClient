@@ -11,6 +11,7 @@
     color: red
     background-color: $spacegray
     padding: 5px
+    height: 55px
 
     img
         position: relative
@@ -41,11 +42,11 @@
         transition: 0.3s
  
     .default
-        display: none
+        display: inline-block
 
-    @media (min-width: 710px)
+    @media (max-width: 710px)
         .default
-            display: inline-block
+            display: none
 
     .header-btn:hover
         background-color: #FFFFFF44
