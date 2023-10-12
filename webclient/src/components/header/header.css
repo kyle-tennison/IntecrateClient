@@ -15,6 +15,7 @@
   color: red;
   background-color: #242424;
   padding: 5px;
+  height: 55px;
 }
 #header img {
   position: relative;
@@ -40,11 +41,11 @@
   transition: 0.3s;
 }
 #header .default {
-  display: none;
+  display: inline-block;
 }
-@media (min-width: 710px) {
+@media (max-width: 710px) {
   #header .default {
-    display: inline-block;
+    display: none;
   }
 }
 #header .header-btn:hover {

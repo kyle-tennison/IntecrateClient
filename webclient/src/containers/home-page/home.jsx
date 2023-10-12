@@ -24,7 +24,7 @@ export default function Home() {
     } else {
       setTimeout(() => {
         header.style.opacity = 1;
-      }, 4000);
+      }, 1000);
     }
   });
 
