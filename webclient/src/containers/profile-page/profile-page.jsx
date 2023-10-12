@@ -5,7 +5,8 @@ import { ProgressDisplay } from "./progress-display";
 import { ChallengeBlock } from "./challenge-block"
 
 import default_pfp from "/default_pfp.jpg"
-import placeholder_img from "./assets/placeholder.jpeg"
+import placeholder1 from "./assets/placeholder1.jpg"
+import placeholder2 from "./assets/placeholder2.jpg"
 
 export default function Profile() {
   return (
@@ -23,12 +24,12 @@ export default function Profile() {
         <h2 className="divider">My Challenges</h2>
 
         <ChallengeBlock
-          banner={placeholder_img}
+          banner={placeholder1}
           name="sample challenge"
         ></ChallengeBlock>
         <ChallengeBlock
-          banner={placeholder_img}
-          name="sample challenge"
+          banner={placeholder2}
+          name="coming soon"
         ></ChallengeBlock>
 
         <h2 className="divider">My Recommendations</h2>

@@ -90,12 +90,16 @@
   float: left;
   width: 20%;
   height: 100%;
-  background-color: red;
+  overflow: hidden;
+}
+#profile-page #right #challenge-block .left img {
+  height: 100%;
 }
 #profile-page #right #challenge-block .right {
   float: right;
   width: 80%;
   height: 100%;
+  overflow: hidden;
 }
 #profile-page #right #challenge-block .right #challenge-info {
   float: left;
@@ -129,10 +133,6 @@
   position: relative;
   top: 20px;
   width: 80%;
-}
-#profile-page #right #challenge-block img {
-  min-height: 100%;
-  max-width: 100%;
 }
 #profile-page #right #challenge-block h1 {
   border-bottom: 1px solid #a7a7a7;
