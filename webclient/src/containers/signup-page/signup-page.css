@@ -15,7 +15,7 @@
   position: absolute;
   top: 65px;
   width: 100%;
-  height: calc(100% - 65px);
+  height: 680px;
   overflow: hidden;
   padding-bottom: 150px;
   background-size: cover;
