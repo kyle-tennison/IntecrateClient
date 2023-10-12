@@ -6,7 +6,12 @@
  * Run a GET request to the Intecrate API
  * @param {string} endpoint
  */
-async function get(endpoint) { }
+async function get(endpoint) {
+  const response = await request(endpoint, {
+    method: "GET",
+  });
+  return response;
+}
 
 /**
  * Run a POST request to the Intecrate API
@@ -45,8 +50,8 @@ async function request(endpoint, body) {
     };
   }
   if (!response.ok) {
-    console.error(`POST request to ${url} failed with code ${response.status}`);
-    console.error(`Payload:`, payload);
+    console.error(`Request to ${url} failed with code ${response.status}`);
+    console.error(`Payload?:`, body);
     return {
       isError: true,
       content: `Sorry! Our servers failed with a ${response.status} code`,
@@ -99,11 +104,10 @@ export async function login(email, password) {
  * @param {string} username
  */
 export async function signup(email, password, username, birthday) {
-  return await post("signup",
-    {
-      name: username,
-      email: email,
-      password: password,
-      birthday: birthday,
-    })
+  return await post("signup", {
+    name: username,
+    email: email,
+    password: password,
+    birthday: birthday,
+  });
 }
