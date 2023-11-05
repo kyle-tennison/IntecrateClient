@@ -6,6 +6,7 @@ import { signup } from "/src/util/api.js";
 import { useCookies } from "react-cookie";
 import signup_background from "./assets/signup-background.jpg";
 import signup_image from "./assets/signup-image.jpg";
+import { Redirector } from "../../components/redirector/redirector";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -365,6 +366,7 @@ export default function Signup() {
         </div>
       </div>
       <Header></Header>
+      <Redirector onLogin={true} redirect="/profile"></Redirector>
       {/* <Footer></Footer> */}
     </div>
   );
