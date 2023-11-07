@@ -6,6 +6,7 @@ import { login } from "/src/util/api.js";
 import { useCookies } from "react-cookie";
 import login_image from "./assets/login-image.jpg";
 import login_background from "./assets/login-background.jpg";
+import { Redirector } from "../../components/redirector/redirector";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -174,6 +175,7 @@ export default function Login() {
         </div>
       </div>
       <Header></Header>
+      <Redirector onLogin={true} redirect="/profile"></Redirector>
       {/* <Footer></Footer> */}
     </div>
   );

@@ -3,6 +3,7 @@ import Header from "/src/components/header/header";
 
 import { ProgressDisplay } from "./progress-display";
 import { ChallengeBlock } from "./challenge-block";
+import { Redirector } from "../../components/redirector/redirector";
 
 import default_pfp from "/default_pfp.jpg";
 import placeholder1 from "./assets/placeholder1.jpg";
@@ -35,6 +36,7 @@ export default function Profile() {
         <h2 className="divider">My Recommendations</h2>
       </div>
       <Header />
+      <Redirector onLogin={false} redirect="/login"></Redirector>
     </div>
   );
 }
