@@ -44,6 +44,7 @@ async function request(endpoint, body) {
     response = await fetch(getUrl(endpoint), body);
   } catch (error) {
     console.error(`Failed to fetch ${url}.`, error);
+    alert(`Something went wrong trying to run a HTTP request...`);
     return {
       isError: true,
       content: `Sorry! Something unexpected happened: ${error}`,
@@ -52,6 +53,7 @@ async function request(endpoint, body) {
   if (!response.ok) {
     console.error(`Request to ${url} failed with code ${response.status}`);
     console.error(`Payload?:`, body);
+    alert(`Sorry! Our servers failed with a ${response.status} code.`)
     return {
       isError: true,
       content: `Sorry! Our servers failed with a ${response.status} code`,

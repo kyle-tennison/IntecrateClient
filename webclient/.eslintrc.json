@@ -10,7 +10,7 @@
   },
   "plugins": ["react"],
   "rules": {
-    "no-unused-vars": "warn"
+    "no-unused-vars": 0
   },
   "ignorePatterns": ["node_modules/", "dist/"]
 }
