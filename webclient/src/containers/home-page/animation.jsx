@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useEffect } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
@@ -110,10 +112,8 @@ export default function BlenderAnimation() {
         mixer_ready = true;
         tryRender();
       },
-      (prog) => {
+      () => {
         // progress updates
-        if (prog.loaded == prog.total) {
-        }
       },
       (error) => {
         // err handler
